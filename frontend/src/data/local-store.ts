@@ -29,6 +29,15 @@ function readStorage(): Record<string, EntryRow[]> {
 
 let cache: Record<string, EntryRow[]> | null = null
 
+// 跨标签页：别处保存后本页缓存立即作废，再读就是最新那一份，杜绝旧快照回写。
+if (typeof window !== 'undefined') {
+  window.addEventListener('storage', (event) => {
+    if (event.key === STORAGE_KEY) {
+      cache = null
+    }
+  })
+}
+
 export function allRows(): Record<string, EntryRow[]> {
   if (cache === null) {
     cache = readStorage()

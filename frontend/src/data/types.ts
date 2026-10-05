@@ -36,3 +36,14 @@ export type OverviewResult = {
   cards: { label: string; value: number }[]
   modules: { name: string; created: number; pending: number; abnormal: number }[]
 }
+
+// 改动留痕：任何写操作都追加一条，谁、什么时候、改了什么都能倒查。
+export type AuditEntry = {
+  id: number
+  module: string
+  recordId: number
+  action: string
+  operator: string
+  at: string
+  detail: string
+}

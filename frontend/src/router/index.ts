@@ -14,6 +14,7 @@ const Pumpmaint = () => import('@/views/pumpmaint/index.vue')
 const Sluice = () => import('@/views/sluice/index.vue')
 const Screen = () => import('@/views/screen/index.vue')
 const Outfallpatrol = () => import('@/views/outfallpatrol/index.vue')
+const OutfallpatrolDetail = () => import('@/views/outfallpatrol/detail.vue')
 const Floodwarn = () => import('@/views/floodwarn/index.vue')
 const Rescueteam = () => import('@/views/rescueteam/index.vue')
 const Drainequipment = () => import('@/views/drainequipment/index.vue')
@@ -37,6 +38,7 @@ const router = createRouter({
     { path: '/sluice', name: 'sluice', component: Sluice },
     { path: '/screen', name: 'screen', component: Screen },
     { path: '/outfallpatrol', name: 'outfallpatrol', component: Outfallpatrol },
+    { path: '/outfallpatrol/:id', name: 'outfallpatrol-detail', component: OutfallpatrolDetail },
     { path: '/floodwarn', name: 'floodwarn', component: Floodwarn },
     { path: '/rescueteam', name: 'rescueteam', component: Rescueteam },
     { path: '/drainequipment', name: 'drainequipment', component: Drainequipment },

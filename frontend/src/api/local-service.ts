@@ -43,6 +43,10 @@ export function runAction(key: string, id: number, action: string): ActionResult
   if (current === target) {
     return { ok: false, message: `${meta.entity}已经是「${target}」，不用重复操作` }
   }
+  // 终态保护：巡查状态已上报的记录不能再被改回待巡查（其它模块按各自状态机执行）。
+  if (key === 'outfallpatrol' && current === '已上报' && target === '待巡查') {
+    return { ok: false, message: '巡查状态已上报的记录不能再被改回「待巡查」' }
+  }
   const lastStatus = meta.statuses[meta.statuses.length - 1]
   const updated: EntryRow = {
     ...rows[index],
